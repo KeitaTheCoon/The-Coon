@@ -58,7 +58,10 @@ if [ "$crowbar" == 1 ]; then
     output_file="output.txt"
 
     python3 "$crowbar_path" -b rdp -s "$ip1/$port1" -U "$user1" -C "$passwd1" -o "$output_file"
+
+    exit
 fi
+
 
 
 read -p "Enter the API address (e.g., https://example.com/api): " api_url
