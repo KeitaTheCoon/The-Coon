@@ -46,15 +46,18 @@ do
 
 fi
   
-if [ "$crowbar" == 1];then
-    read -p "please type in the ip adress" ip1
+
+if [ "$crowbar" == 1 ]; then
+    read -p "please type in the ip address" ip1
     read -p "Please type in the Port" port1
     read -p "Please type in the user list to brute force" user1
-    read -p " Please type in the password list to brute force" passwd1
-    
-    
-    ./crowbar.py -b rdp -s $ip1/$port1 -U $user1 -C $passwd1 -d
+    read -p "Please type in the password list to brute force" passwd1
+    read -p " Please insert the path to the crowbar tool" c1
 
+    crowbar_path="$c1"
+    output_file="output.txt"
+
+    python3 "$crowbar_path" -b rdp -s "$ip1/$port1" -U "$user1" -C "$passwd1" -o "$output_file"
 fi
 
 
